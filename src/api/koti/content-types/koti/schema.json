@@ -1,0 +1,33 @@
+{
+  "kind": "singleType",
+  "collectionName": "kotis",
+  "info": {
+    "singularName": "koti",
+    "pluralName": "kotis",
+    "displayName": "Koti"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "kuva": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "mainoslause": {
+      "type": "string",
+      "default": "Huutava mainoslause",
+      "required": true
+    },
+    "taustatiedot": {
+      "type": "text",
+      "default": "Taustatiedot firmasta: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo sem eu laoreet viverra. Curabitur vel turpis a purus tristique accumsan at vel nisl. Sed eleifend nisi et nulla consequat, eget dictum purus hendrerit.",
+      "required": true
+    }
+  }
+}
