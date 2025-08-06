@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_page_abouts",
+  "info": {
+    "displayName": "About"
+  },
+  "options": {},
+  "attributes": {
+    "otsikko": {
+      "type": "string",
+      "default": "Otsikko",
+      "required": true
+    },
+    "mainoslause": {
+      "type": "string",
+      "default": "Kunnon kova mainoslause",
+      "required": true
+    },
+    "teksti": {
+      "type": "text",
+      "default": "Lorem ipsum dolor sit amet",
+      "required": true
+    },
+    "kuva": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  },
+  "config": {}
+}

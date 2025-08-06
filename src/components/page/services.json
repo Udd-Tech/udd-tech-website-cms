@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_page_services",
+  "info": {
+    "displayName": "Services"
+  },
+  "options": {},
+  "attributes": {
+    "otsikko": {
+      "type": "string",
+      "default": "Palvelut",
+      "required": true
+    },
+    "palvelut": {
+      "type": "component",
+      "component": "shared.service",
+      "repeatable": true,
+      "required": true
+    }
+  },
+  "config": {}
+}

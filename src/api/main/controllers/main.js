@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * koti controller
+ * main controller
  */
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::koti.koti');
+module.exports = createCoreController('api::main.main');

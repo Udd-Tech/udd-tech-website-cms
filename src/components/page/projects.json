@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_page_projects",
+  "info": {
+    "displayName": "Projects"
+  },
+  "options": {},
+  "attributes": {
+    "otsikko": {
+      "type": "string",
+      "default": "Meidän projektit",
+      "required": true
+    },
+    "mainoslause": {
+      "type": "string",
+      "default": "Kunnon mainoslause",
+      "required": true
+    },
+    "teksti": {
+      "type": "text",
+      "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo sem eu laoreet viverra. Curabitur vel turpis a purus tristique accumsan at vel nisl. Sed eleifend nisi et nulla consequat, eget dictum purus hendrerit. Curabitur vel turpis a purus tristique accumsan at vel nisl. Sed eleifend nisi et nulla consequat, eget dictum purus hendrerit.",
+      "required": true
+    }
+  },
+  "config": {}
+}

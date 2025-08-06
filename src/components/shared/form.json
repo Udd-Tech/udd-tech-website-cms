@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_shared_forms",
+  "info": {
+    "displayName": "Form"
+  },
+  "options": {},
+  "attributes": {
+    "otsikko": {
+      "type": "string",
+      "default": "Yhteydenottolomake",
+      "required": true
+    },
+    "kuvaus": {
+      "type": "text",
+      "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "required": true
+    },
+    "aiheet": {
+      "type": "component",
+      "component": "shared.subject",
+      "repeatable": true,
+      "required": true
+    }
+  },
+  "config": {}
+}

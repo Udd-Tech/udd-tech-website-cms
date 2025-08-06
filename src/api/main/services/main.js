@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * koti service
+ * main service
  */
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('api::koti.koti');
+module.exports = createCoreService('api::main.main');

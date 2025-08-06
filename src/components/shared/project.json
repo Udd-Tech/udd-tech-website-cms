@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_shared_projects",
+  "info": {
+    "displayName": "Project"
+  },
+  "options": {},
+  "attributes": {
+    "nimi": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "kuvaus": {
+      "type": "text",
+      "required": true
+    },
+    "kuvat": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "pikkukuva": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  },
+  "config": {}
+}

@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * koti router
+ * main router
  */
 
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('api::koti.koti');
+module.exports = createCoreRouter('api::main.main');

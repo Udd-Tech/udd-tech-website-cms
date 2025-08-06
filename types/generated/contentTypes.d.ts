@@ -373,6 +373,35 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiContactContact extends Struct.SingleTypeSchema {
+  collectionName: 'contacts';
+  info: {
+    displayName: 'Yhteystiedot';
+    pluralName: 'contacts';
+    singularName: 'contact';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.Email & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::contact.contact'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    puhelin: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   collectionName: 'globals';
   info: {
@@ -388,7 +417,6 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    defaultSeo: Schema.Attribute.Component<'shared.seo', false>;
     favicon: Schema.Attribute.Media<'images' | 'files' | 'videos'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -396,6 +424,7 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
       'api::global.global'
     > &
       Schema.Attribute.Private;
+    logo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     siteDescription: Schema.Attribute.Text & Schema.Attribute.Required;
     siteName: Schema.Attribute.String & Schema.Attribute.Required;
@@ -405,12 +434,48 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   };
 }
 
-export interface ApiKotiKoti extends Struct.SingleTypeSchema {
-  collectionName: 'kotis';
+export interface ApiMainMain extends Struct.SingleTypeSchema {
+  collectionName: 'mains';
   info: {
-    displayName: 'Koti';
-    pluralName: 'kotis';
-    singularName: 'koti';
+    displayName: 'P\u00E4\u00E4sivu';
+    pluralName: 'mains';
+    singularName: 'main';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    banneri: Schema.Attribute.Component<'page.hero', false> &
+      Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::main.main'> &
+      Schema.Attribute.Private;
+    meista: Schema.Attribute.Component<'page.about', false> &
+      Schema.Attribute.Required;
+    palvelut: Schema.Attribute.Component<'page.services', false> &
+      Schema.Attribute.Required;
+    projektit: Schema.Attribute.Component<'page.projects', false> &
+      Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    seo: Schema.Attribute.Component<'shared.seo', false> &
+      Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    yhteydenotto: Schema.Attribute.Component<'page.contact', false> &
+      Schema.Attribute.Required;
+  };
+}
+
+export interface ApiProjectProject extends Struct.SingleTypeSchema {
+  collectionName: 'projects';
+  info: {
+    displayName: 'Projektit';
+    pluralName: 'projects';
+    singularName: 'project';
   };
   options: {
     draftAndPublish: true;
@@ -419,17 +484,15 @@ export interface ApiKotiKoti extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    kuva: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::koti.koti'> &
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::project.project'
+    > &
       Schema.Attribute.Private;
-    mainoslause: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'Huutava mainoslause'>;
+    projektit: Schema.Attribute.Component<'shared.project', true> &
+      Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    taustatiedot: Schema.Attribute.Text &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'Taustatiedot firmasta: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo sem eu laoreet viverra. Curabitur vel turpis a purus tristique accumsan at vel nisl. Sed eleifend nisi et nulla consequat, eget dictum purus hendrerit.'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -945,8 +1008,10 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::contact.contact': ApiContactContact;
       'api::global.global': ApiGlobalGlobal;
-      'api::koti.koti': ApiKotiKoti;
+      'api::main.main': ApiMainMain;
+      'api::project.project': ApiProjectProject;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
