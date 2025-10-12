@@ -381,13 +381,14 @@ export interface ApiContactContact extends Struct.SingleTypeSchema {
     singularName: 'contact';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     email: Schema.Attribute.Email & Schema.Attribute.Required;
+    linkit: Schema.Attribute.Component<'shared.links', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -414,6 +415,7 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
     draftAndPublish: false;
   };
   attributes: {
+    certificates: Schema.Attribute.Media<'images', true>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -425,6 +427,8 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
     > &
       Schema.Attribute.Private;
     logo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    popup: Schema.Attribute.Component<'shared.popup', false> &
+      Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     siteDescription: Schema.Attribute.Text & Schema.Attribute.Required;
     siteName: Schema.Attribute.String & Schema.Attribute.Required;
@@ -434,10 +438,49 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiMainIndMainInd extends Struct.SingleTypeSchema {
+  collectionName: 'main_inds';
+  info: {
+    displayName: 'P\u00E4\u00E4sivu - Teollisuus';
+    pluralName: 'main-inds';
+    singularName: 'main-ind';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    banneri: Schema.Attribute.Component<'page.hero', false> &
+      Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::main-ind.main-ind'
+    > &
+      Schema.Attribute.Private;
+    meista: Schema.Attribute.Component<'page.about', false> &
+      Schema.Attribute.Required;
+    palvelut: Schema.Attribute.Component<'page.services', false> &
+      Schema.Attribute.Required;
+    projektit: Schema.Attribute.Component<'page.projects', false> &
+      Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    seo: Schema.Attribute.Component<'shared.seo', false> &
+      Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    yhteydenotto: Schema.Attribute.Component<'page.contact', false> &
+      Schema.Attribute.Required;
+  };
+}
+
 export interface ApiMainMain extends Struct.SingleTypeSchema {
   collectionName: 'mains';
   info: {
-    displayName: 'P\u00E4\u00E4sivu';
+    displayName: 'P\u00E4\u00E4sivu - Kotitaloudet';
     pluralName: 'mains';
     singularName: 'main';
   };
@@ -462,6 +505,8 @@ export interface ApiMainMain extends Struct.SingleTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     seo: Schema.Attribute.Component<'shared.seo', false> &
       Schema.Attribute.Required;
+    tiimi: Schema.Attribute.Component<'page.our-team', false> &
+      Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -470,10 +515,39 @@ export interface ApiMainMain extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiProjectIndProjectInd extends Struct.SingleTypeSchema {
+  collectionName: 'project_inds';
+  info: {
+    displayName: 'Projektit - Teollisuus';
+    pluralName: 'project-inds';
+    singularName: 'project-ind';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::project-ind.project-ind'
+    > &
+      Schema.Attribute.Private;
+    projektit: Schema.Attribute.Component<'shared.project', true> &
+      Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiProjectProject extends Struct.SingleTypeSchema {
   collectionName: 'projects';
   info: {
-    displayName: 'Projektit';
+    displayName: 'Projektit - Kotitaloudet';
     pluralName: 'projects';
     singularName: 'project';
   };
@@ -1010,7 +1084,9 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::contact.contact': ApiContactContact;
       'api::global.global': ApiGlobalGlobal;
+      'api::main-ind.main-ind': ApiMainIndMainInd;
       'api::main.main': ApiMainMain;
+      'api::project-ind.project-ind': ApiProjectIndProjectInd;
       'api::project.project': ApiProjectProject;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

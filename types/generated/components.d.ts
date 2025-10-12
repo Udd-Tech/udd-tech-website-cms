@@ -52,6 +52,18 @@ export interface PageHero extends Struct.ComponentSchema {
   };
 }
 
+export interface PageOurTeam extends Struct.ComponentSchema {
+  collectionName: 'components_page_our_teams';
+  info: {
+    displayName: 'Our Team';
+  };
+  attributes: {
+    kuvaus: Schema.Attribute.Text;
+    otsikko: Schema.Attribute.String;
+    tiimi: Schema.Attribute.Component<'shared.staff-member', true>;
+  };
+}
+
 export interface PageProjects extends Struct.ComponentSchema {
   collectionName: 'components_page_projects';
   info: {
@@ -101,6 +113,22 @@ export interface SharedForm extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedLinks extends Struct.ComponentSchema {
+  collectionName: 'components_shared_links';
+  info: {
+    displayName: 'Links';
+  };
+  attributes: {
+    kuvake: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Etsi kuvakkeet t\u00E4st\u00E4 ja kopioi svg koodi: https://icon-sets.iconify.design/'>;
+    nimi: Schema.Attribute.String & Schema.Attribute.Required;
+    url: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'https://'>;
+  };
+}
+
 export interface SharedMedia extends Struct.ComponentSchema {
   collectionName: 'components_shared_media';
   info: {
@@ -109,6 +137,19 @@ export interface SharedMedia extends Struct.ComponentSchema {
   };
   attributes: {
     file: Schema.Attribute.Media<'images' | 'files' | 'videos'>;
+  };
+}
+
+export interface SharedPopup extends Struct.ComponentSchema {
+  collectionName: 'components_shared_popups';
+  info: {
+    displayName: 'Popup';
+  };
+  attributes: {
+    nappi1: Schema.Attribute.String & Schema.Attribute.Required;
+    nappi2: Schema.Attribute.String & Schema.Attribute.Required;
+    otsikko: Schema.Attribute.String & Schema.Attribute.Required;
+    teksti: Schema.Attribute.Text & Schema.Attribute.Required;
   };
 }
 
@@ -124,6 +165,10 @@ export interface SharedProject extends Struct.ComponentSchema {
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
     pikkukuva: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    teksti: Schema.Attribute.Text & Schema.Attribute.Required;
+    url: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
   };
 }
 
@@ -192,6 +237,21 @@ export interface SharedSlider extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedStaffMember extends Struct.ComponentSchema {
+  collectionName: 'components_shared_staff_members';
+  info: {
+    displayName: 'Staff member';
+    icon: 'user';
+  };
+  attributes: {
+    kuva: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Schema.Attribute.Required;
+    nimi: Schema.Attribute.String & Schema.Attribute.Required;
+    puhelin: Schema.Attribute.String;
+    titteli: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface SharedSubject extends Struct.ComponentSchema {
   collectionName: 'components_shared_subjects';
   info: {
@@ -210,16 +270,20 @@ declare module '@strapi/strapi' {
       'page.about': PageAbout;
       'page.contact': PageContact;
       'page.hero': PageHero;
+      'page.our-team': PageOurTeam;
       'page.projects': PageProjects;
       'page.services': PageServices;
       'shared.form': SharedForm;
+      'shared.links': SharedLinks;
       'shared.media': SharedMedia;
+      'shared.popup': SharedPopup;
       'shared.project': SharedProject;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;
       'shared.seo': SharedSeo;
       'shared.service': SharedService;
       'shared.slider': SharedSlider;
+      'shared.staff-member': SharedStaffMember;
       'shared.subject': SharedSubject;
     }
   }

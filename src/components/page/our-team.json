@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_page_our_teams",
+  "info": {
+    "displayName": "Our Team"
+  },
+  "options": {},
+  "attributes": {
+    "otsikko": {
+      "type": "string"
+    },
+    "kuvaus": {
+      "type": "text"
+    },
+    "tiimi": {
+      "type": "component",
+      "component": "shared.staff-member",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

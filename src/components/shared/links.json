@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_shared_links",
+  "info": {
+    "displayName": "Links"
+  },
+  "options": {},
+  "attributes": {
+    "nimi": {
+      "type": "string",
+      "required": true
+    },
+    "url": {
+      "type": "string",
+      "default": "https://",
+      "required": true,
+      "regex": "^https?:\\/\\/\\S+$"
+    },
+    "kuvake": {
+      "type": "string",
+      "default": "Etsi kuvakkeet tästä ja kopioi svg koodi: https://icon-sets.iconify.design/",
+      "required": true
+    }
+  },
+  "config": {}
+}

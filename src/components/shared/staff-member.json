@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_shared_staff_members",
+  "info": {
+    "displayName": "Staff member",
+    "icon": "user"
+  },
+  "options": {},
+  "attributes": {
+    "kuva": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "nimi": {
+      "type": "string",
+      "required": true
+    },
+    "titteli": {
+      "type": "string",
+      "required": true
+    },
+    "puhelin": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

@@ -1,10 +1,10 @@
 {
   "kind": "singleType",
-  "collectionName": "projects",
+  "collectionName": "project_inds",
   "info": {
-    "singularName": "project",
-    "pluralName": "projects",
-    "displayName": "Projektit - Kotitaloudet"
+    "singularName": "project-ind",
+    "pluralName": "project-inds",
+    "displayName": "Projektit - Teollisuus"
   },
   "options": {
     "draftAndPublish": true

@@ -37,6 +37,19 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "certificates": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "popup": {
+      "type": "component",
+      "component": "shared.popup",
+      "repeatable": false,
+      "required": true
     }
   }
 }

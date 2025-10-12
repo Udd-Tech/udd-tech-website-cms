@@ -1,10 +1,10 @@
 {
   "kind": "singleType",
-  "collectionName": "mains",
+  "collectionName": "main_inds",
   "info": {
-    "singularName": "main",
-    "pluralName": "mains",
-    "displayName": "Pääsivu - Kotitaloudet"
+    "singularName": "main-ind",
+    "pluralName": "main-inds",
+    "displayName": "Pääsivu - Teollisuus"
   },
   "options": {
     "draftAndPublish": true
@@ -26,12 +26,6 @@
     "meista": {
       "type": "component",
       "component": "page.about",
-      "repeatable": false,
-      "required": true
-    },
-    "tiimi": {
-      "type": "component",
-      "component": "page.our-team",
       "repeatable": false,
       "required": true
     },

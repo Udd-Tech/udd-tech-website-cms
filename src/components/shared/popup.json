@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_shared_popups",
+  "info": {
+    "displayName": "Popup"
+  },
+  "options": {},
+  "attributes": {
+    "otsikko": {
+      "type": "string",
+      "required": true
+    },
+    "teksti": {
+      "type": "text",
+      "required": true
+    },
+    "nappi1": {
+      "type": "string",
+      "required": true
+    },
+    "nappi2": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "config": {}
+}
