@@ -16,7 +16,7 @@
       "regex": "^https?:\\/\\/\\S+$"
     },
     "kuvake": {
-      "type": "string",
+      "type": "text",
       "default": "Etsi kuvakkeet tästä ja kopioi svg koodi: https://icon-sets.iconify.design/",
       "required": true
     }

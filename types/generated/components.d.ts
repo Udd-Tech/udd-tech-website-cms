@@ -119,7 +119,7 @@ export interface SharedLinks extends Struct.ComponentSchema {
     displayName: 'Links';
   };
   attributes: {
-    kuvake: Schema.Attribute.String &
+    kuvake: Schema.Attribute.Text &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'Etsi kuvakkeet t\u00E4st\u00E4 ja kopioi svg koodi: https://icon-sets.iconify.design/'>;
     nimi: Schema.Attribute.String & Schema.Attribute.Required;
