@@ -381,7 +381,7 @@ export interface ApiContactContact extends Struct.SingleTypeSchema {
     singularName: 'contact';
   };
   options: {
-    draftAndPublish: false;
+    draftAndPublish: true;
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
@@ -412,7 +412,7 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
     singularName: 'global';
   };
   options: {
-    draftAndPublish: false;
+    draftAndPublish: true;
   };
   attributes: {
     certificates: Schema.Attribute.Media<'images', true>;
@@ -461,8 +461,6 @@ export interface ApiMainIndMainInd extends Struct.SingleTypeSchema {
     > &
       Schema.Attribute.Private;
     meista: Schema.Attribute.Component<'page.about', false> &
-      Schema.Attribute.Required;
-    palvelut: Schema.Attribute.Component<'page.services', false> &
       Schema.Attribute.Required;
     projektit: Schema.Attribute.Component<'page.projects', false> &
       Schema.Attribute.Required;

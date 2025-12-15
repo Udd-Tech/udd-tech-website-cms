@@ -29,12 +29,6 @@
       "repeatable": false,
       "required": true
     },
-    "palvelut": {
-      "type": "component",
-      "component": "page.services",
-      "repeatable": false,
-      "required": true
-    },
     "projektit": {
       "type": "component",
       "component": "page.projects",

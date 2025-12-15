@@ -7,7 +7,7 @@
     "displayName": "Yhteystiedot"
   },
   "options": {
-    "draftAndPublish": false
+    "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
